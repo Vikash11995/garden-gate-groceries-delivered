@@ -25,15 +25,15 @@ const Navbar = () => {
         {!isMobile && (
           <div className="flex items-center gap-8">
             <div className="flex gap-6">
-              <a href="#products" className="text-gray-700 hover:text-garden-500 transition-all-200">
+              <Link to="/#products" className="text-gray-700 hover:text-garden-500 transition-all-200">
                 Products
-              </a>
-              <a href="#how-it-works" className="text-gray-700 hover:text-garden-500 transition-all-200">
+              </Link>
+              <Link to="/#how-it-works" className="text-gray-700 hover:text-garden-500 transition-all-200">
                 How It Works
-              </a>
-              <a href="#about" className="text-gray-700 hover:text-garden-500 transition-all-200">
+              </Link>
+              <Link to="/#about" className="text-gray-700 hover:text-garden-500 transition-all-200">
                 About Us
-              </a>
+              </Link>
             </div>
             <div className="flex items-center gap-4">
               <Link to="/cart" className="relative">
@@ -62,15 +62,15 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobile && isMenuOpen && (
         <div className="container mx-auto mt-4 pb-4 flex flex-col gap-4">
-          <a href="#products" className="text-gray-700 py-2 border-b border-gray-100">
+          <Link to="/#products" className="text-gray-700 py-2 border-b border-gray-100">
             Products
-          </a>
-          <a href="#how-it-works" className="text-gray-700 py-2 border-b border-gray-100">
+          </Link>
+          <Link to="/#how-it-works" className="text-gray-700 py-2 border-b border-gray-100">
             How It Works
-          </a>
-          <a href="#about" className="text-gray-700 py-2 border-b border-gray-100">
+          </Link>
+          <Link to="/#about" className="text-gray-700 py-2 border-b border-gray-100">
             About Us
-          </a>
+          </Link>
           <div className="flex items-center justify-between pt-2">
             <Link to="/cart" className="relative flex items-center gap-2">
               <ShoppingCart className="h-6 w-6 text-gray-700" />
