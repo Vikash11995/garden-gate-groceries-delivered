@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { LeafyGreen, ShoppingCart, Menu, X } from "lucide-react";
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,10 +14,10 @@ const Navbar = () => {
   return (
     <nav className="bg-white py-4 px-6 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
-        <a href="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <LeafyGreen className="h-8 w-8 text-garden-500" />
           <span className="text-xl font-semibold text-garden-800">Garden Gate</span>
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         {!isMobile && (
@@ -39,7 +40,9 @@ const Navbar = () => {
                   0
                 </span>
               </a>
-              <Button className="bg-garden-500 hover:bg-garden-600 text-white">Sign In</Button>
+              <Link to="/signin">
+                <Button className="bg-garden-500 hover:bg-garden-600 text-white">Sign In</Button>
+              </Link>
             </div>
           </div>
         )}
@@ -72,7 +75,9 @@ const Navbar = () => {
               </span>
               <span className="text-gray-700">Cart</span>
             </a>
-            <Button className="bg-garden-500 hover:bg-garden-600 text-white">Sign In</Button>
+            <Link to="/signin">
+              <Button className="bg-garden-500 hover:bg-garden-600 text-white">Sign In</Button>
+            </Link>
           </div>
         </div>
       )}
