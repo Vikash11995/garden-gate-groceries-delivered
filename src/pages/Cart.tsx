@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, Trash2, Minus, Plus, FileText, RefreshCcw, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
+import PaytmCheckout from "@/components/PaytmCheckout";
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart();
