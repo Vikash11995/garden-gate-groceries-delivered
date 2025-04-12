@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { LeafyGreen, ShoppingCart, Menu, X } from "lucide-react";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Link } from 'react-router-dom';
+import { useCart } from '@/contexts/CartContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { cartCount } = useCart();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -34,12 +36,14 @@ const Navbar = () => {
               </a>
             </div>
             <div className="flex items-center gap-4">
-              <a href="#cart" className="relative">
+              <Link to="/cart" className="relative">
                 <ShoppingCart className="h-6 w-6 text-gray-700 hover:text-garden-500 transition-all-200" />
-                <span className="absolute -top-2 -right-2 bg-carrot-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  0
-                </span>
-              </a>
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-carrot-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {cartCount > 99 ? '99+' : cartCount}
+                  </span>
+                )}
+              </Link>
               <Link to="/signin">
                 <Button className="bg-garden-500 hover:bg-garden-600 text-white">Sign In</Button>
               </Link>
@@ -68,13 +72,15 @@ const Navbar = () => {
             About Us
           </a>
           <div className="flex items-center justify-between pt-2">
-            <a href="#cart" className="relative flex items-center gap-2">
+            <Link to="/cart" className="relative flex items-center gap-2">
               <ShoppingCart className="h-6 w-6 text-gray-700" />
-              <span className="absolute -top-2 -right-2 bg-carrot-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-carrot-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartCount > 99 ? '99+' : cartCount}
+                </span>
+              )}
               <span className="text-gray-700">Cart</span>
-            </a>
+            </Link>
             <Link to="/signin">
               <Button className="bg-garden-500 hover:bg-garden-600 text-white">Sign In</Button>
             </Link>
