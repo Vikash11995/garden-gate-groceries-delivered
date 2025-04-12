@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/contexts/CartContext";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Trash2, Minus, Plus, FileText, RefreshCcw } from "lucide-react";
+import { ShoppingCart, Trash2, Minus, Plus, FileText, RefreshCcw, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 
@@ -12,6 +12,7 @@ const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart();
   const [showBill, setShowBill] = useState(false);
   const [billGenerated, setBillGenerated] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
   
   const generateBill = () => {
     setShowBill(true);
@@ -20,6 +21,10 @@ const Cart = () => {
       title: "Bill generated",
       description: "Your bill has been generated successfully"
     });
+  };
+
+  const handleCheckout = () => {
+    setShowPayment(true);
   };
 
   const currentDate = new Date().toLocaleDateString('en-US', {
@@ -153,9 +158,18 @@ const Cart = () => {
                 {billGenerated ? "Bill Generated" : "Generate Bill"}
               </Button>
               
-              <Button className="w-full bg-carrot-500 hover:bg-carrot-600 text-white">
+              <Button 
+                className="w-full bg-carrot-500 hover:bg-carrot-600 text-white"
+                onClick={handleCheckout}
+              >
                 Proceed to Checkout
               </Button>
+
+              {showPayment && (
+                <div className="mt-4">
+                  <PaytmCheckout amount={(cartTotal + (cartTotal * 0.05)).toFixed(2)} />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -165,7 +179,7 @@ const Cart = () => {
             <div className="flex justify-between items-start mb-8">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <LeafyGreen className="h-6 w-6 text-garden-500" />
+                  <Leaf className="h-6 w-6 text-garden-500" />
                   <span className="text-xl font-semibold text-garden-800">Garden Gate</span>
                 </div>
                 <p className="text-gray-500 text-sm">Fresh produce delivered to your door</p>
